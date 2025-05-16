@@ -1,0 +1,17 @@
+name: Workflow acionado por push ou cron(agendado a cada hora)
+
+on: #define os eventos que acionam o workflow
+    push:
+    schedule:
+        - cron: '0 * * * *' #Define quando o workflow será acionado. Neste caso, a cada hora.
+
+jobs: #define os jobs que serão executados
+    build:
+        runs-on: ubuntu-latest
+
+        steps: #define os passos do job que o github actions irá executar
+            - name: Clonar o repositório
+              uses: actions/checkout@v4
+
+            - name: Rodar script personalizado
+              run: echo 'Olá! Esse é um script personalizado rodando no workflow.' 
